@@ -1,0 +1,27 @@
+{
+  "name": "Lychee Extension",
+  "version": "1.0",
+  "description": "Feed your pets by avoiding impulsive purchases!",
+  "manifest_version": 2,
+	"browser_action": {
+		"default_popup": "popup.html"
+	},
+  "background": {
+        "scripts": [
+					"background.js"
+				],
+				"persistent": false
+    },
+	"permissions": [
+			"contextMenus", "storage"
+	],
+	"content_scripts": [
+		{
+			"matches": ["https://www.amazon.ca/*", "https://www.amazon.com/*"],
+			"js": ["jquery.min.js", "htmlUtil.js", "pets.js", "content.js", "buyNowClickHandler.js", "buyNow.js"]
+		}
+	],
+	"web_accessible_resources": [
+		"images/*.png", "images/*.svg", "images/pets/*.png", "images/pets-heart/*.png"
+	]
+}
